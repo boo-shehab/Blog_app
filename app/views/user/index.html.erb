@@ -4,18 +4,24 @@
       <img src="<%= user.photo %>">
     </div>
     <div class = "user-info">
-      <a href=<%= "/user/#{user.id}" %>>  
+    
+      <%= link_to user_path(user) do %>
         <h1>
           <%= user.name %>
         </h1>  
         <p>
           Number of posts : <%= user.post_counter %>
         </p>
-      </a>
+      <%end%>
     </div>
   </div>
 <% end %>
 
+<%= button_to "Sign out", 
+        destroy_user_session_path, 
+        method: :delete, 
+        data: {turbo: false} if user_signed_in?%>
+
 <button>
-  <%= link_to "add new post for #{@user.name}", new_user_post_path(@user) %>
+  <%= link_to "add new post for #{current_user.name}", new_user_post_path(current_user) %>
 </button>

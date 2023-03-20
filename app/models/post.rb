@@ -7,12 +7,17 @@ class Post < ApplicationRecord
   has_many :comment
   has_many :like
 
-  after_save :updates_posts_counter
+  after_save :increase_posts_counter
+  after_destroy :decrease_posts_counter
 
   private
 
-  def updates_posts_counter
+  def increase_posts_counter
     author.update(post_counter: author.post_counter + 1)
+  end
+
+  def decrease_posts_counter
+    author.update(post_counter: author.post_counter - 1)
   end
 
   def recent_five_comments
