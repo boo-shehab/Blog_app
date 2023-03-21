@@ -1,7 +1,7 @@
 RSpec.describe 'test post/show', type: :feature do
   before(:all) do
     @user = User.create(name: 'Ahmed', photo: 'https://unsplash.com/photos/F_-0BxGuVvo',
-                         bio: 'hello')
+                        bio: 'hello')
     @post = Post.create(author: @user, title: 'Hi', text: 'Bye')
   end
 

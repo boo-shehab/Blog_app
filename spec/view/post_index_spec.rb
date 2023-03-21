@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe 'test post/index', type: :feature do
   before(:all) do
-    @user = User.create(name: 'Ahmed', photo: 'https://unsplash.com/photos/F_-0BxGuVvo',bio: 'hello')
+    @user = User.create(name: 'Ahmed', photo: 'https://unsplash.com/photos/F_-0BxGuVvo', bio: 'hello')
     Post.create(author: @user, title: 'Hi', text: 'Bye')
     Post.create(author: @user, title: 'Hi', text: 'Bye')
     @posts = Post.where(author_id: @user.id).includes(comment: [:author])
