@@ -25,7 +25,7 @@ default: &default
 
 development:
   <<: *default
-  database: blog_post_development
+  database: blog_post_development2
   username: postgres
   password: 4yaTX2Hv
 
@@ -61,7 +61,7 @@ development:
 # Do not set this db to the same as development or production.
 test:
   <<: *default
-  database: blog_post_development
+  database: blog_post_development2
   username: postgres
   password: 4yaTX2Hv
 
@@ -87,6 +87,6 @@ test:
 #
 production:
   <<: *default
-  database: blog_post_production
+  database: blog_post_production2
   username: postgres
   password: <%= ENV["nabeel"] %>

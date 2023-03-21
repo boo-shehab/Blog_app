@@ -2,6 +2,7 @@ require 'rails_helper'
 
 RSpec.describe 'Users', type: :request do
   describe 'GET /index' do
+    let(:user) { User.create(name: 'Ahmed', photo: 'image', bio: 'bio') }
     it 'Status test' do
       get user_index_path
       expect(response).to have_http_status(200)
@@ -12,7 +13,7 @@ RSpec.describe 'Users', type: :request do
     end
     it 'test response body' do
       get user_index_path
-      expect(response.body).to include 'index user'
+      expect(response.body).to include user.name
     end
   end
 
@@ -29,7 +30,7 @@ RSpec.describe 'Users', type: :request do
     end
     it 'test response body' do
       get user_path_for_index
-      expect(response.body).to include 'show user'
+      expect(response.body).to include user.name
     end
   end
 end

@@ -2,26 +2,28 @@ require 'rails_helper'
 
 RSpec.describe 'test user/show', type: :feature do
   before(:all) do
-    @user = User.find(2)
+    @user = User.create(name: 'Ahmed', photo: 'https://unsplash.com/photos/F_-0BxGuVvo',
+                         bio: 'hello')
+    @post = Post.create(author: @user, title: 'Hi', text: 'Bye')
   end
   scenario 'users photo test' do
-    visit user_path(2)
+    visit user_path(@user.id)
     expect(page).to have_xpath("//img[@src='#{@user.photo}']")
   end
   scenario 'users name test' do
-    visit user_path(2)
+    visit user_path(@user.id)
     expect(page).to have_content(@user.name)
   end
   scenario 'users post_counter test' do
-    visit user_path(2)
+    visit user_path(@user.id)
     expect(page).to have_content("Number of posts : #{@user.post_counter}")
   end
   scenario 'users bio test' do
-    visit user_path(2)
+    visit user_path(@user.id)
     expect(page).to have_content(@user.bio)
   end
   scenario 'users post test' do
-    visit user_path(2)
+    visit user_path(@user.id)
     @user.post.take(3).each do |post|
       expect(page).to have_content(post.title)
       expect(page).to have_content(post.text)
@@ -30,17 +32,17 @@ RSpec.describe 'test user/show', type: :feature do
     end
   end
   scenario 'users chack link test' do
-    visit user_path(2)
+    visit user_path(@user.id)
     expect(page).to have_link('See all posts', href: user_post_index_path(user_id: @user.id))
   end
   scenario 'users click see all posts test' do
-    visit user_path(2)
+    visit user_path(@user.id)
     click_on('See all posts')
     expect(page).to have_current_path(user_post_index_path(user_id: @user.id))
   end
 
   scenario 'users click see all posts test' do
-    visit user_path(2)
+    visit user_path(@user.id)
     first_post = @user.post.take(3)[0]
     click_link(href: "/user/#{@user.id}/post/#{first_post.id}")
 

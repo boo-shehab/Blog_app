@@ -2,6 +2,8 @@ require 'rails_helper'
 
 RSpec.describe 'test user/index', type: :feature do
   before(:all) do
+    User.create(name: 'Ahmed', photo: 'https://unsplash.com/photos/F_-0BxGuVvo', bio: 'hello')
+    User.create(name: 'Abas', photo: 'https://unsplash.com/photos/F_-0BxGuVvo', bio: 'hello')
     @users = User.all
   end
   scenario 'users name test' do
