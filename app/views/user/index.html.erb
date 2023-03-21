@@ -17,6 +17,16 @@
   </div>
 <% end %>
 
+<%= button_to "Sign out", 
+        destroy_user_session_path, 
+        method: :delete, 
+        data: {turbo: false} if user_signed_in?%>
+
+<%
+=begin%>
+ 
 <button>
   <%= link_to "add new post for #{@user.name}", new_user_post_path(@user) %>
-</button>
+</button> 
+<%
+=end%>
