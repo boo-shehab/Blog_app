@@ -6,7 +6,9 @@ class CommentController < ApplicationController
   end
 
   def create
-    comment = Comment.new(post_params, author_id: current_user.id, post_id: params[:post_id])
+    comment = Comment.new(comment_params)
+    comment.author_id = current_user.id
+    comment.post_id = params[:post_id]
     if comment.save
       redirect_to user_post_path(user_id: current_user.id, id: params[:post_id])
     else

@@ -13,7 +13,7 @@ RSpec.describe 'Posts', type: :request do
     end
     it 'test response body' do
       get user_post_index_path(user_id: user.id)
-      expect(response.body).to include 'index post'
+      expect(response.body).to include user.name
     end
   end
 
@@ -30,7 +30,7 @@ RSpec.describe 'Posts', type: :request do
     end
     it 'test response body' do
       get post_path_for_an_id
-      expect(response.body).to include 'show post'
+      expect(response.body).to include post.title
     end
   end
 end

@@ -5,7 +5,7 @@ RSpec.describe User, type: :model do
 
   before { user.save }
 
-  it 'name should be present' do
+  it 'name should be present ' do
     user.name = nil
 
     expect(user).to_not be_valid

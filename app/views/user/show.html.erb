@@ -22,9 +22,8 @@
     <%= @user.bio %>
   </p>
 </div>
-
-<% @user.post.each do |post| %>
-    <a href=<%= "/user/#{@user.id}/post/#{post.id}" %> class="postDiv">
+<% @user.post.take(3).each do |post| %>
+    <%= link_to user_post_path(user_id: @user.id, id: post.id), class: 'postDiv' do %>
         <h3>
             <%= post.title %>
         </h3>
@@ -32,11 +31,10 @@
             <%= post.text %>
         </p>
         <p class="likes">
-        comments : <%= post.comments_counter %>
-        likes : <%= post.likes_counter %>
+            comments : <%= post.comments_counter %>
+            likes : <%= post.likes_counter %>
         </p>
-
-    </a>
+    <% end %>
 <% end %>
 
 <p class="seeBtn">
