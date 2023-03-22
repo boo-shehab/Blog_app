@@ -5,6 +5,7 @@ class Like < ApplicationRecord
   after_save :updates_likes_counter
   after_save :increase_likes_counter
   after_destroy :decrease_likes_counter
+
   private
 
   def increase_likes_counter

@@ -24,6 +24,7 @@ class PostController < ApplicationController
       redirect_to user_index_path, notice: 'Post creation failed'
     end
   end
+
   def destroy
     @user = User.find(params[:user_id])
     @post = @user.post.find(params[:id])
@@ -36,6 +37,7 @@ class PostController < ApplicationController
       flash.now[:error] = 'Error: Post could not be deleted'
     end
   end
+
   private
 
   def post_params

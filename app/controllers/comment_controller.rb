@@ -15,6 +15,7 @@ class CommentController < ApplicationController
       redirect_to user_index_path, notice: 'Post creation failed'
     end
   end
+
   def destroy
     @user = User.find(params[:user_id])
     @post = Post.find(params[:post_id])
@@ -26,6 +27,7 @@ class CommentController < ApplicationController
       flash.now[:error] = 'Error: Comment could not be deleted'
     end
   end
+
   private
 
   def comment_params

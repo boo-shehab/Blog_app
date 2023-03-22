@@ -7,7 +7,7 @@ class Post < ApplicationRecord
   has_many :comment
   has_many :like
 
-  after_save :updates_posts_counter 
+  after_save :updates_posts_counter
   after_save :increase_posts_counter
   after_destroy :decrease_posts_counter
 
