@@ -1,4 +1,5 @@
 class PostController < ApplicationController
+  load_and_authorize_resource
   def index
     @user = User.find(params[:user_id])
     @posts = Post.where(author_id: @user.id).includes(comment: [:author])
@@ -23,7 +24,18 @@ class PostController < ApplicationController
       redirect_to user_index_path, notice: 'Post creation failed'
     end
   end
-
+  def destroy
+    @user = User.find(params[:user_id])
+    @post = @user.post.find(params[:id])
+    @post.comments.destroy_all
+    @post.likes.destroy_all
+    if @post.destroy
+      flash[:success] = 'Post deleted successfully'
+      redirect_to user_path(@user)
+    else
+      flash.now[:error] = 'Error: Post could not be deleted'
+    end
+  end
   private
 
   def post_params
