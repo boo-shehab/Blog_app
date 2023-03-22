@@ -93,6 +93,11 @@ To run the project, execute the following command:
 - Twitter: [@boo_shehab2000](https://twitter.com/boo_shehab2000)
 - LinkedIn: [boo-shehab](https://www.linkedin.com/in/boo-shehab)
 
+👤 **Kibrewossen Y Mekasha**
+
+- GitHub: [@akos29](https://github.com/akos29)
+- LinkedIn: [LinkedIn](https://www.linkedin.com/in/kibrewossen-y-mekasha/)
+
 
 👤 **Kibrewossen Y Mekasha**
 
