@@ -65,7 +65,7 @@ In order to run this project you need:
 
 Clone this repository by using the command line :
 
-- `https://github.com/jonathanmunamire/Blog-App.git`
+- `https://github.com/boo-shehab/Blog_app.git`
 
 ### Install
 
@@ -87,11 +87,16 @@ To run the project, execute the following command:
 
 > Mention all of the collaborators of this project.
 
-👤 **Author1**
+👤 **Ahmed Abas**
 
 - GitHub: [@boo-shehab](https://github.com/boo-shehab)
 - Twitter: [@boo_shehab2000](https://twitter.com/boo_shehab2000)
 - LinkedIn: [boo-shehab](https://www.linkedin.com/in/boo-shehab)
+
+👤 **Kibrewossen Y Mekasha**
+
+- GitHub: [@akos29](https://github.com/akos29)
+- LinkedIn: [LinkedIn](https://www.linkedin.com/in/kibrewossen-y-mekasha/)
 
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
