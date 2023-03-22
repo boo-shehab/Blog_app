@@ -3,6 +3,12 @@ class PostController < ApplicationController
   def index
     @user = User.find(params[:user_id])
     @posts = Post.where(author_id: @user.id).includes(comment: [:author])
+
+    respond_to do |format|
+      format.html
+      format.xml { render xml: @posts }
+      format.json { render json: @posts }
+    end
   end
 
   def show
@@ -28,8 +34,8 @@ class PostController < ApplicationController
   def destroy
     @user = User.find(params[:user_id])
     @post = @user.post.find(params[:id])
-    @post.comments.destroy_all
-    @post.likes.destroy_all
+    @post.comment.destroy_all
+    @post.like.destroy_all
     if @post.destroy
       flash[:success] = 'Post deleted successfully'
       redirect_to user_path(@user)

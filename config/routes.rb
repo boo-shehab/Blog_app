@@ -7,7 +7,7 @@ Rails.application.routes.draw do
 
   resources :user, only: [:index, :show] do
     resources :post, only: [:index, :show, :new, :create, :destroy] do
-      resources :comment, only: [:new, :create, :destroy] 
+      resources :comment, only: [:index, :new, :create, :destroy] 
       resources :like, only: [:create] 
     end
   end
