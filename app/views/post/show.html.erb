@@ -18,6 +18,9 @@
           <%= comment.author.name %> :
         </b> 
         <%= comment.text %>
+        <% if can? :destroy, comment%>
+          <%= button_to 'Delete', user_post_comment_path(user_id: @user.id,post_id: @post,id: comment.id), method: :delete, data: { confirm: 'Are you sure?' } %>
+        <% end%>
         <br>
       <% end %>
     </p>
@@ -28,3 +31,6 @@
 </button>
 
 <%= button_to "add a like for #{@user.name} #{@post.title}", user_post_like_index_path(user_id: @user.id, post_id: @post.id),  method: :post %>
+<% if can? :destroy, @post%>
+<%= button_to 'Delete', user_post_path(@user, @post), method: :delete, data: { confirm: 'Are you sure?' } %>
+<% end%>
