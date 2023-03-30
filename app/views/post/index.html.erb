@@ -1,0 +1,54 @@
+<div class="user-card">
+  <div class="user-image">
+    <img src="<%= @user.photo %>">
+  </div>
+  <div class = "user-info">
+    <a href=<%= "/user/#{@user.id}" %>>  
+      <h1>
+        <%= @user.name %>
+      </h1>  
+      <p>
+        Number of posts : <%= @user.post_counter %>
+      </p>
+    </a>
+  </div>
+</div>
+<% @posts.each do |post| %>
+  <div class ="post-container">
+    <div class = 'post-info'>
+      <a href=<%= "/user/#{@user.id}/post/#{post.id}" %>>
+        <h3>
+          <%= post.title %>
+        </h3>
+        <p>
+          <%= post.text %>
+        </p>
+        <p class="likes">
+          comments : <%= post.comments_counter %>
+          likes : <%= post.likes_counter %>
+        </p>
+      </a>
+    </div>
+    <% if post.comments_counter != 0 %>
+      <p class="comments">
+        <% counter = 0 %>
+        <% post.comment.each do |comment| %>
+          <% if counter == 5 %>
+            <% break %>
+          <%end%>
+          <% counter += 1%>
+          <b>
+            <%= comment.author.name %> :
+          </b> 
+          <%= comment.text %>
+          <br>
+        <% end %>
+      </p>
+    <% end %>
+  <% end %>
+</div>
+<p class="seeBtn">
+  <a class="see">
+    See all posts
+  </a>
+</p>

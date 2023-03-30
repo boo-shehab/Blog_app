@@ -1,0 +1,44 @@
+<div class="user-card">
+  <div class="user-image">
+    <img src="<%= @user.photo %>">
+  </div>
+  <div class = 'user-info'>
+    <a href=<%= "/user/#{@user.id}" %>>  
+      <h1>
+        <%= @user.name %>
+      </h1>  
+      <p>
+        Number of posts : <%= @user.post_counter %>
+      </p>
+    </a>
+  </div>
+</div>
+
+<div class="bio">
+  <h3>
+    Bio
+  </h3>
+  <p>
+    <%= @user.bio %>
+  </p>
+</div>
+<% @user.post.take(3).each do |post| %>
+    <%= link_to user_post_path(user_id: @user.id, id: post.id), class: 'postDiv' do %>
+        <h3>
+            <%= post.title %>
+        </h3>
+        <p>
+            <%= post.text %>
+        </p>
+        <p class="likes">
+            comments : <%= post.comments_counter %>
+            likes : <%= post.likes_counter %>
+        </p>
+    <% end %>
+<% end %>
+
+<p class="seeBtn">
+    <a class="see" href = <%= "/user/#{@user.id}/post" %>>
+        See all posts
+    </a>
+</p>

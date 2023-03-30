@@ -1,0 +1,36 @@
+<div class ="post-container">
+  <div class = 'post-info'>
+    <h3>
+      <%= @post.title %> by <%= @user.name %>  
+    </h3>
+    <p class="likes">
+      comments : <%= @post.comments_counter %>
+      likes : <%= @post.likes_counter %>
+    </p>
+    <p>
+      <%= @post.text %>
+    </p>
+  </div>
+  <% if @post.comments_counter != 0 %>
+    <p class="comments">
+      <% @post.comment.each do |comment| %>
+        <b>
+          <%= comment.author.name %> :
+        </b> 
+        <%= comment.text %>
+        <% if can? :destroy, comment%>
+          <%= button_to 'Delete', user_post_comment_path(user_id: @user.id,post_id: @post,id: comment.id), method: :delete, data: { confirm: 'Are you sure?' } %>
+        <% end%>
+        <br>
+      <% end %>
+    </p>
+  <% end %>
+</div>
+<button>
+<%= link_to "add new comment for #{@user.name} to post #{@post.title}", new_user_post_comment_path(user_id: @user.id, post_id: @post.id) %>
+</button>
+
+<%= button_to "add a like for #{@user.name} #{@post.title}", user_post_like_index_path(user_id: @user.id, post_id: @post.id),  method: :post %>
+<% if can? :destroy, @post%>
+<%= button_to 'Delete', user_post_path(@user, @post), method: :delete, data: { confirm: 'Are you sure?' } %>
+<% end%>

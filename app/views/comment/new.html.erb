@@ -1,0 +1,5 @@
+<%= form_with model: @comment, url: user_post_comment_index_path(user_id: @user.id, post_id: @post.id)  do |form| %>
+  <%= form.label :text %>
+  <%= form.text_field :text %>
+  <%= form.submit "new comment" %>
+<% end %>
